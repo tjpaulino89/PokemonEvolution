@@ -38,14 +38,14 @@ class App extends Component {
     fetch(this.state.currentPage)
         .then(response => response.json())
         .then(data => {
-          this.setState({ loading: false, nextPage: data.next, prevPage: data.previous })
+          this.setState({ nextPage: data.next, prevPage: data.previous })
           const pokemonNames = data.results.map(item => item.name);
           const pokemonPromises = pokemonNames.map(item => {
             return fetch(`https://pokeapi.co/api/v2/pokemon-species/${item}/`).then(resp => resp.json())
             })
           Promise.all(pokemonPromises)
             .then(responses => {
-              this.setState({ pokemonDisplayed: responses});})
+              this.setState({ loading: false, pokemonDisplayed: responses});})
             .catch(err => console.log("Error. Please try again.", err))
           })
           .catch(err => console.log("Error. Please try again.", err))
