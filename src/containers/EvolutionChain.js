@@ -46,7 +46,7 @@ const EvolutionChain = ({pokemonList, onItemClick, goToList}) => {
                     pokemonData.map((pokemon, i) => {
                         if(i < pokemonData.length-1){
                             return(
-                                <div className='flex flex-wrap items-center' key={pokemon.id}>
+                                <div className='flex flex-wrap justify-center items-center' key={pokemon.id}>
                                     <Card name={pokemon.name} id={pokemon.id} onItemClick={onItemClick}/>
                                     <EvolutionArrow />
                                 </div>
