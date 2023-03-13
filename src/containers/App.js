@@ -45,7 +45,7 @@ class App extends Component {
             })
           Promise.all(pokemonPromises)
             .then(responses => {
-              this.setState({ loading: false, pokemonDisplayed: responses});})
+              this.setState({ pokemonDisplayed: responses, loading: false });})
             .catch(err => console.log("Error. Please try again.", err))
           })
           .catch(err => console.log("Error. Please try again.", err))
