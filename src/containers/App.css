@@ -1,0 +1,57 @@
+@font-face {
+  font-family: pokemonFont;
+  src: url(Pokemon\ Hollow.ttf);
+}
+
+@font-face {
+  font-family: pokemonFontSolid;
+  src: url(Pokemon\ Solid.ttf);
+}
+
+h1 {
+  font-family: pokemonFont;
+  color: #FFDE00;
+  text-shadow: 4px 4px #003A70;
+  margin: 2rem;
+}
+
+div, h2, h3 {
+  font-family: pokemonFontSolid;
+  color: #003A70;
+  font-weight: 100;
+  letter-spacing: 2px;
+}
+
+ul {
+  display: inline;
+}
+
+li {
+  display: inline;
+}
+
+button {
+  color: #003A70;
+  font-family: pokemonFont;
+  letter-spacing: 1px;
+}
+
+input {
+  letter-spacing: 1px;
+}
+/* .arrowDiv {
+  vertical-align: middle;
+} */
+
+.bg-pokemon-yellow {
+  background-color: #FFDE00;
+}
+.bg-pokemon-light-grey {
+  background-color: #ededebe6
+}
+.bg-pokemon-blue {
+  background-color: #003A70;
+}
+.b--pokemon-blue {
+  border-color: #003A70;
+}
