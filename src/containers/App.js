@@ -78,7 +78,7 @@ class App extends Component {
 
   goToNextPage = () => {
     if(this.state.nextPage){
-     this.setState({ currentPage: this.state.nextPage })
+     this.setState({  pokemonDisplayed: [], currentPage: this.state.nextPage })
     }
   }
 
