@@ -39,13 +39,18 @@ class App extends Component {
         .then(response => response.json())
         .then(data => {
           this.setState({ nextPage: data.next, prevPage: data.previous })
-          const pokemonNames = data.results.map(item => item.name);
-          const pokemonPromises = pokemonNames.map(item => {
-            return fetch(`https://pokeapi.co/api/v2/pokemon-species/${item}/`).then(resp => resp.json())
+          const pokemonNames = data.results.map(item => item.url.slice(34, -1));
+          const pokemonPromises = pokemonNames.map(id => {
+            return fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`).then(resp => resp.json())
             })
           Promise.all(pokemonPromises)
             .then(responses => {
-              this.setState({ pokemonDisplayed: responses, loading: false });})
+              const pokemonObj = responses.map((pokemon) => ({
+                name: pokemon.name,
+                id: pokemon.id,
+                evolution_chain: pokemon.evolution_chain
+              }))
+              this.setState({ pokemonDisplayed: pokemonObj, loading: false });})
             .catch(err => console.log("Error. Please try again.", err))
           })
           .catch(err => console.log("Error. Please try again.", err))
@@ -95,14 +100,13 @@ class App extends Component {
 
   //Render
   render() {
-    if (this.state.loading){
-      return <h1>LOADING...</h1>
-    }
-    return(
+    return !this.state.pokemonDisplayed ? <h1>LOADING...</h1> :
+     (
       <div className='tc'>
-        <h1 className='f-subheadline lh-title'>Pokemon Evolution</h1>
+        <h1 className='f-subheadline-ns f1'>Pokemon Evolution</h1>
           <SearchBox onSearch={this.onSearch}/>
-            {this.state.searchError ? <SearchError goToList={this.goToList}/> :
+            {this.state.loading ? <h1>LOADING...</h1> :
+            this.state.searchError ? <SearchError goToList={this.goToList}/> :
             this.state.searching ? <h1>Searching...</h1> :
             <ErrorBoundary>
                 <PokemonLists 
@@ -112,7 +116,8 @@ class App extends Component {
                   goToNextPage={this.state.nextPage ? this.goToNextPage : null}
                   goToPrevPage={this.state.prevPage ? this.goToPrevPage : null}
                   goToList={this.goToList}/>
-            </ErrorBoundary>}
+            </ErrorBoundary> 
+            }
       </div>
     );
   }
