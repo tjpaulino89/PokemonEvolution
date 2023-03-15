@@ -13,4 +13,6 @@ A simple application to view a Pokemon's evolution chain.
 
 ## Description
 
-A simple application to view a Pokemon's evolution chain. Browse through the pages and click on a Pokemon or search any Pokemon's name to view their evolution.
+A simple application to view a Pokemon's evolution chain. Browse through the pages and click on a Pokemon or search any Pokemon's name to view their evolution.  
+
+To view the project, [Click Here](tjpaulino89.github.io/PokemonEvolution/).
