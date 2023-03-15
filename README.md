@@ -1,6 +1,6 @@
 # Pokemon Evolution
 
-By Thomas Paulino
+By Thomas Paulino  
 A simple application to view a Pokemon's evolution chain.
 
 ## Technologies Used
